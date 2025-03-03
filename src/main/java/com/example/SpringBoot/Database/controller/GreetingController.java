@@ -50,4 +50,11 @@ public class GreetingController {
         else
             return "Hello, Welcome to Bridgelabz";
     }
+
+    //UC4
+    @PostMapping("/save")
+    public MessageDTO save(@RequestBody MessageDTO message){
+        return greetingService.saveMessage(message);
+    }
+
 }
