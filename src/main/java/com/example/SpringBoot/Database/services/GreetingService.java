@@ -45,5 +45,15 @@ public class GreetingService {
         return m2;
 
     }
+    public List<MessageDTO> listAll(){
+
+        List<MessageDTO> list = greetingRepository.findAll().stream().map(entity -> {
+            MessageDTO m = new MessageDTO(entity.getMessage());
+            m.setId(entity.getId());
+            return m;
+        }).collect(Collectors.toList());
+
+        return list;
+    }
 
 }
