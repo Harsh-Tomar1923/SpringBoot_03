@@ -1,12 +1,13 @@
 package com.example.SpringBoot.Database.controller;
-
-
 import com.example.SpringBoot.Database.dto.MessageDTO;
 import org.springframework.web.bind.annotation.*;
+import com.example.SpringBoot.Database.services.GreetingService;
 
 @RestController
 @RequestMapping("greetings")
 public class GreetingController {
+
+    //---------------UC1--------------------
 
     @GetMapping("/get")
     public String getGreetings(){
@@ -23,6 +24,17 @@ public class GreetingController {
         return "{\""+message+": \"Hello from PUT Request!\"}";
     }
 
+    //---------------------UC2-------------------
 
+    GreetingService greetingService;
+
+    public GreetingController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    @GetMapping("/service")
+    public String serviceGreetings(){
+        return greetingService.getGreetings();
+    }
 
 }
