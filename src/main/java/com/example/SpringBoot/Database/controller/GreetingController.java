@@ -1,5 +1,6 @@
 package com.example.SpringBoot.Database.controller;
 import com.example.SpringBoot.Database.dto.MessageDTO;
+import jakarta.websocket.server.PathParam;
 import org.springframework.web.bind.annotation.*;
 import com.example.SpringBoot.Database.services.GreetingService;
 
@@ -37,4 +38,16 @@ public class GreetingController {
         return greetingService.getGreetings();
     }
 
+    //---------------------UC3--------------------
+    @GetMapping("/query")
+    public String query(@PathParam("firstName") String firstName, @PathParam("lastName") String lastName){
+        if(firstName != null && lastName != null)
+            return "Hello "+firstName+" "+lastName+" Welcome to Bridgelabz";
+        else if(firstName != null)
+            return "Hello "+firstName+" Welcome to Bridgelabz";
+        else if(lastName != null)
+            return "Hello "+lastName+" Welcome to Bridgelabz";
+        else
+            return "Hello, Welcome to Bridgelabz";
+    }
 }
