@@ -5,9 +5,10 @@ import com.example.SpringBoot.Database.dto.MessageDTO;
 import com.example.SpringBoot.Database.dto.AuthUserDTO;
 import com.example.SpringBoot.Database.services.AuthenticationService;
 import com.example.SpringBoot.Database.services.EmailServices;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import com.example.SpringBoot.Database.dto.PassDTO;
+import com.example.SpringBoot.Database.interfaces.IAuthInterface;
 
 public class UserController {
     EmailServices emailService;
@@ -38,4 +39,12 @@ public class UserController {
     }
 
     //UC12 --> Added Swagger Config to use Swagger at url(/swagger)
+
+    //UC13 --> Added forgot password functionality
+    IAuthInterface iAuthInterface;
+
+    @PutMapping("/forgotPassword/{email}")
+    public AuthUserDTO forgotPassword(@RequestBody PassDTO pass, @PathVariable String email){
+        return iAuthInterface.forgotPassword(pass, email);
+    }
 }
