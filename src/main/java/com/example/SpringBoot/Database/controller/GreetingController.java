@@ -3,7 +3,6 @@ import com.example.SpringBoot.Database.dto.MessageDTO;
 import jakarta.websocket.server.PathParam;
 import org.springframework.web.bind.annotation.*;
 import com.example.SpringBoot.Database.services.GreetingService;
-
 import java.util.List;
 
 @RestController
